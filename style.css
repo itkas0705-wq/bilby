@@ -1,0 +1,994 @@
+/* ==================================
+   ОСНОВНЫЕ НАСТРОЙКИ
+================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background: #10101a;
+    --surface: #1b1b29;
+    --surface-two: #252538;
+
+    --text: #f6e9d6;
+    --muted: #b4a6a1;
+
+    --accent: #f2a45f;
+    --accent-two: #c56c47;
+
+    --border: #383344;
+    --header: rgba(13, 13, 23, 0.92);
+
+    --hero-top: #101426;
+    --hero-middle: #35304c;
+    --hero-bottom: #8d5360;
+
+    --dune-back: #694354;
+    --dune-front: #352d3e;
+
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+body.day {
+    --background: #fff1d8;
+    --surface: #f8dfb8;
+    --surface-two: #efd0a0;
+
+    --text: #34251c;
+    --muted: #71513a;
+
+    --accent: #b84f20;
+    --accent-two: #d87937;
+
+    --border: #d6ad7f;
+    --header: rgba(255, 238, 210, 0.95);
+
+    --hero-top: #62b4dc;
+    --hero-middle: #f5b477;
+    --hero-bottom: #ffe0a4;
+
+    --dune-back: #d99453;
+    --dune-front: #b96c3d;
+
+    --shadow: rgba(104, 63, 28, 0.15);
+}
+
+
+/* ==================================
+   ОБЩЕЕ
+================================== */
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+
+    transition:
+        background 0.6s,
+        color 0.6s;
+
+    overflow-x: hidden;
+}
+
+button, a {
+    font-family: inherit;
+}
+
+button {
+    color: inherit;
+}
+
+section {
+    scroll-margin-top: 85px;
+}
+
+.section {
+    padding: 110px 10%;
+}
+
+.subtitle {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+h2 {
+    font-size: clamp(35px, 5vw, 65px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+
+/* ==================================
+   ШАПКА
+================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 75px;
+
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--header);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
+    z-index: 100;
+
+    transition: background 0.5s;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 4px;
+
+    color: var(--text);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.theme-button {
+    background: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+
+    padding: 11px 17px;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-button:hover {
+    background: var(--accent);
+    color: #24170e;
+}
+
+
+/* ==================================
+   ГЛАВНЫЙ ЭКРАН
+================================== */
+
+.hero {
+    height: 100vh;
+    min-height: 700px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 10%;
+
+    background: linear-gradient(
+        180deg,
+        var(--hero-top),
+        var(--hero-middle) 55%,
+        var(--hero-bottom)
+    );
+
+    transition: background 0.7s;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 10vw, 120px);
+    line-height: 0.85;
+    letter-spacing: -7px;
+    font-weight: 900;
+
+    color: #fff1dc;
+}
+
+body.day .hero h1 {
+    color: #4b291b;
+}
+
+.description {
+    max-width: 400px;
+    margin: 35px 0;
+
+    line-height: 1.8;
+    color: #e7d7d5;
+}
+
+body.day .description {
+    color: #513525;
+}
+
+.start-button {
+    display: inline-block;
+
+    padding: 17px 25px;
+
+    background: var(--accent);
+    color: #27180f;
+
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.start-button:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.15);
+}
+
+.sun, .moon {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+    right: 18%;
+    top: 19%;
+
+    transition: 0.7s;
+}
+
+.moon {
+    background: #e3e6f7;
+    box-shadow: 0 0 70px rgba(177, 190, 255, 0.4);
+
+    opacity: 1;
+    transform: scale(1);
+}
+
+.sun {
+    background: #ffe2a0;
+    box-shadow: 0 0 100px rgba(255, 192, 95, 0.9);
+
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+body.day .moon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+body.day .sun {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hero-stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1.5px),
+        radial-gradient(#b7c9ff 1px, transparent 1.5px);
+
+    background-size: 85px 85px, 130px 130px;
+    background-position: 0 0, 35px 45px;
+
+    opacity: 0.55;
+    transition: opacity 0.7s;
+}
+
+body.day .hero-stars {
+    opacity: 0;
+}
+
+.hero-dune {
+    position: absolute;
+    width: 150%;
+    height: 350px;
+
+    left: -20%;
+    border-radius: 50% 50% 0 0;
+
+    transition: background 0.7s;
+}
+
+.dune-back {
+    bottom: -220px;
+    background: var(--dune-back);
+    transform: rotate(-5deg);
+}
+
+.dune-front {
+    bottom: -280px;
+    background: var(--dune-front);
+    transform: rotate(5deg);
+}
+
+.coordinates {
+    position: absolute;
+    bottom: 70px;
+    right: 8%;
+
+    z-index: 5;
+
+    color: #e9d5ce;
+    font-size: 10px;
+    line-height: 2.2;
+    letter-spacing: 2px;
+}
+
+body.day .coordinates {
+    color: #4b3020;
+}
+
+.hero-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    z-index: 5;
+
+    display: flex;
+    gap: 15px;
+
+    color: var(--text);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* ==================================
+   ВСТУПЛЕНИЕ
+================================== */
+
+.intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.intro-image {
+    min-height: 450px;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.55),
+            transparent
+        ),
+        url("https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1000")
+        center / cover;
+
+    position: relative;
+    box-shadow: 0 20px 60px var(--shadow);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.intro-text p:not(.subtitle) {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 15px;
+
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+
+/* ==================================
+   ЗАГОЛОВКИ СЕКЦИЙ
+================================== */
+
+.section-heading {
+    max-width: 650px;
+    margin-bottom: 55px;
+}
+
+.section-heading > p:last-child {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+
+/* ==================================
+   ПРОГРЕСС
+================================== */
+
+.progress-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    padding: 25px 30px;
+    margin-bottom: 30px;
+}
+
+.progress-label {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.progress-panel h3 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.progress-track {
+    width: 40%;
+    height: 9px;
+
+    background: var(--background);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+
+    background: var(--accent);
+    border-radius: 20px;
+
+    transition: width 0.5s;
+}
+
+
+/* ==================================
+   КАРТА
+================================== */
+
+.map {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.map-heading, .map-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 25px;
+
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.map-area {
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at 20% 20%, #dca46a 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 75%, #ae704a 0%, transparent 45%),
+        linear-gradient(135deg, #b87950, #e1b879, #c58b5d);
+
+    background-size: 150% 150%;
+    animation: mapMovement 15s ease-in-out infinite alternate;
+}
+
+body.day .map-area {
+    filter: saturate(1.1) brightness(1.08);
+}
+
+.map-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        repeating-linear-gradient(
+            20deg,
+            transparent 0px,
+            transparent 35px,
+            rgba(104, 57, 31, 0.13) 36px,
+            transparent 38px
+        );
+
+    pointer-events: none;
+}
+
+@keyframes mapMovement {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 100%; }
+}
+
+.map-decoration {
+    position: absolute;
+    color: rgba(255, 245, 205, 0.8);
+    font-size: 30px;
+}
+
+.decoration-one {
+    top: 20%;
+    left: 50%;
+}
+
+.decoration-two {
+    bottom: 20%;
+    left: 15%;
+}
+
+.decoration-three {
+    top: 65%;
+    right: 20%;
+}
+
+.map-point {
+    position: absolute;
+    z-index: 2;
+
+    border: 2px solid rgba(255, 245, 220, 0.8);
+    border-radius: 50px;
+
+    background: rgba(49, 32, 28, 0.85);
+    color: white;
+
+    padding: 12px 17px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.map-point:hover {
+    transform: scale(1.1);
+    background: #e99a55;
+    color: #24170e;
+}
+
+.map-point.found {
+    border-color: #fff0b0;
+    background: #4f6947;
+}
+
+.point-icon {
+    font-size: 19px;
+}
+
+.point-name {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.point-one {
+    top: 20%;
+    left: 15%;
+}
+
+.point-two {
+    top: 55%;
+    left: 40%;
+}
+
+.point-three {
+    top: 25%;
+    right: 15%;
+}
+
+.point-four {
+    bottom: 15%;
+    right: 18%;
+}
+
+.secret-point {
+    top: 45%;
+    left: 70%;
+    background: #674a88;
+    border-color: #e2c5ff;
+    animation: secretGlow 1.8s infinite alternate;
+}
+
+@keyframes secretGlow {
+    from { box-shadow: 0 0 5px #e2c5ff; }
+    to { box-shadow: 0 0 25px #e2c5ff; }
+}
+
+.map-footer {
+    border-top: 1px solid var(--border);
+}
+
+
+/* ==================================
+   ИСТОРИИ
+================================== */
+
+.story-box {
+    margin-top: 30px;
+    padding: 35px;
+
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+
+    background: var(--surface);
+    box-shadow: 0 10px 35px var(--shadow);
+
+    min-height: 185px;
+}
+
+.story-number {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.story-box h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.story-box p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+#storyStatus {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.secret-hint {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+
+/* ==================================
+   ДНЕВНИК
+================================== */
+
+.diary {
+    background: var(--surface);
+}
+
+.diary-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.diary-entry {
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--background);
+
+    animation: entryAppear 0.6s ease;
+}
+
+@keyframes entryAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.diary-entry > span:first-child {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.diary-entry h3 {
+    margin: 17px 0;
+    font-size: 22px;
+}
+
+.diary-entry p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.entry-status {
+    font-size: 10px;
+    color: #7ebd82;
+    letter-spacing: 2px;
+}
+
+
+/* ==================================
+   ФИНАЛ
+================================== */
+
+.ending {
+    text-align: center;
+    padding: 130px 10%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #29223a,
+            #754650,
+            #b96b48
+        );
+
+    color: #fff0dc;
+}
+
+body.day .ending {
+    background: linear-gradient(
+        135deg,
+        #e5a66c,
+        #f3c58c,
+        #d98c5b
+    );
+
+    color: #3c2419;
+}
+
+.ending h2 {
+    font-size: clamp(45px, 8vw, 90px);
+}
+
+.ending p {
+    margin: 25px 0 35px;
+}
+
+
+/* ==================================
+   ПОДВАЛ
+================================== */
+
+footer {
+    padding: 45px 10%;
+    text-align: center;
+
+    background: var(--background);
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 2.2;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+
+/* ==================================
+   СВЕТ ОТ КУРСОРА
+================================== */
+
+.cursor-light {
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+    z-index: 50;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 195, 130, 0.13),
+        transparent 70%
+    );
+}
+
+body.day .cursor-light {
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3),
+        transparent 70%
+    );
+}
+
+
+/* ==================================
+   АДАПТАЦИЯ
+================================== */
+
+@media (max-width: 850px) {
+
+    .section {
+        padding: 85px 7%;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro-image {
+        min-height: 350px;
+    }
+
+    .hero {
+        padding: 0 7%;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .sun, .moon {
+        right: 8%;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 5%;
+        height: 65px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .coordinates {
+        right: 7%;
+        bottom: 75px;
+        font-size: 8px;
+    }
+
+    .hero-bottom {
+        left: 7%;
+        font-size: 8px;
+    }
+
+    .progress-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .progress-track {
+        width: 100%;
+    }
+
+    .map-area {
+        height: 360px;
+    }
+
+    .map-point {
+        padding: 9px 11px;
+    }
+
+    .point-name {
+        font-size: 10px;
+    }
+
+    .point-one {
+        left: 5%;
+    }
+
+    .point-three {
+        right: 4%;
+    }
+
+    .point-four {
+        right: 5%;
+    }
+
+    .story-box {
+        padding: 25px;
+    }
+
+    .diary-list {
+        grid-template-columns: 1fr;
+    }
+
+    .map-heading, .map-footer {
+        font-size: 8px;
+        padding: 15px;
+    }
+
+    .ending {
+        padding: 100px 5%;
+    }
+
+    .cursor-light {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+.map-poit[hidden] {
+    display: none;
+}

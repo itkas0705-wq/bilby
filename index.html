@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11101c">
+    <title>BILBY — Lost in the Desert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="night">
+
+<div class="cursor-light"></div>
+
+<header>
+    <a href="#home" class="logo">BILBY<span>.</span></a>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#world">Исследование</a>
+        <a href="#diary">Дневник</a>
+    </nav>
+
+    <button id="themeButton" class="theme-button">
+        ☀ ДЕНЬ
+    </button>
+</header>
+
+<main>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-stars"></div>
+        <div class="moon"></div>
+        <div class="sun"></div>
+
+        <div class="hero-content">
+            <p class="subtitle">AN UNUSUAL DESERT ADVENTURE</p>
+
+            <h1>LOST IN<br>THE DESERT</h1>
+
+            <p class="description">
+                Огромный мир. Маленький путешественник.
+                И приключение, которое только начинается.
+            </p>
+
+            <a href="#world" class="start-button">
+                НАЧАТЬ ПУТЕШЕСТВИЕ →
+            </a>
+        </div>
+
+        <div class="coordinates">
+            <p>LOCATION: UNKNOWN</p>
+            <p>REGION: AUSTRALIAN DESERT</p>
+            <p>MISSION: EXPLORE</p>
+        </div>
+
+        <div class="hero-dune dune-back"></div>
+        <div class="hero-dune dune-front"></div>
+
+        <div class="hero-bottom">
+            <span>SCROLL TO EXPLORE</span>
+            <span>↓</span>
+        </div>
+
+    </section>
+
+
+    <!-- ВСТУПЛЕНИЕ -->
+
+    <section class="intro section">
+
+        <div class="intro-image">
+            <div class="image-overlay">
+                <span>THE WORLD OF BILBY</span>
+            </div>
+        </div>
+
+        <div class="intro-text">
+            <p class="subtitle">WELCOME, EXPLORER</p>
+
+            <h2>МАЛЕНЬКИЙ<br>МИР БОЛЬШИХ<br>ПРИКЛЮЧЕНИЙ</h2>
+
+            <p>
+                Добро пожаловать в мир короткометражного мультфильма
+                Bilby от DreamWorks.
+            </p>
+
+            <p>
+                Здесь можно исследовать пустыню, находить интересные
+                места и собирать записи своего путешествия.
+            </p>
+
+            <a href="#world" class="text-link">
+                ИССЛЕДОВАТЬ МИР →
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ИССЛЕДОВАНИЕ -->
+
+    <section class="world section" id="world">
+
+        <div class="section-heading">
+            <p class="subtitle">01 / EXPLORATION</p>
+            <h2>ИССЛЕДУЙ ПУСТЫНЮ</h2>
+
+            <p>
+                Выбирай места на карте и открывай новые записи.
+                Некоторые секреты не так просто найти.
+            </p>
+        </div>
+
+        <div class="progress-panel">
+
+            <div>
+                <span class="progress-label">ПРОГРЕСС ЭКСПЕДИЦИИ</span>
+                <h3 id="progressText">0 / 4 НАЙДЕНО</h3>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+        </div>
+
+
+        <div class="map">
+
+            <div class="map-heading">
+                <span>DESERT MAP</span>
+                <span>UNKNOWN TERRITORY</span>
+            </div>
+
+            <div class="map-area">
+
+                <div class="map-decoration decoration-one">✦</div>
+                <div class="map-decoration decoration-two">✧</div>
+                <div class="map-decoration decoration-three">✦</div>
+
+                <button class="map-point point-one"
+                    data-place="dunes">
+                    <span class="point-icon">🏜️</span>
+                    <span class="point-name">Дюны</span>
+                </button>
+
+                <button class="map-point point-two"
+                    data-place="cave">
+                    <span class="point-icon">🪨</span>
+                    <span class="point-name">Пещера</span>
+                </button>
+
+                <button class="map-point point-three"
+                    data-place="oasis">
+                    <span class="point-icon">🌴</span>
+                    <span class="point-name">Оазис</span>
+                </button>
+
+                <button class="map-point point-four"
+                    data-place="tracks">
+                    <span class="point-icon">🐾</span>
+                    <span class="point-name">Следы</span>
+                </button>
+
+                <button class="map-point secret-point"
+                    id="secretPoint"
+                    data-place="secret"
+                    hidden>
+                    <span class="point-icon">⭐</span>
+                    <span class="point-name">Секрет</span>
+                </button>
+
+            </div>
+
+            <div class="map-footer">
+                <span>CLICK ON A LOCATION TO EXPLORE</span>
+                <span>MAP №001</span>
+            </div>
+
+        </div>
+
+
+        <!-- ОКНО ИСТОРИИ -->
+
+        <div class="story-box" id="storyBox">
+
+            <div class="story-number">EXPEDITION LOG</div>
+
+            <h3 id="storyTitle">Путешествие начинается</h3>
+
+            <p id="storyText">
+                Выбери точку на карте, чтобы узнать,
+                что скрывает пустыня.
+            </p>
+
+            <span id="storyStatus">ОЖИДАНИЕ ИССЛЕДОВАНИЯ</span>
+
+        </div>
+
+        <p class="secret-hint" id="secretHint">
+            Некоторые места открываются только после исследования других.
+        </p>
+
+    </section>
+
+
+    <!-- ДНЕВНИК -->
+
+    <section class="diary section" id="diary">
+
+        <div class="section-heading">
+            <p class="subtitle">02 / FIELD NOTES</p>
+            <h2>ДНЕВНИК ЭКСПЕДИЦИИ</h2>
+
+            <p>
+                Каждое открытие оставляет след.
+                Здесь хранятся все найденные записи.
+            </p>
+        </div>
+
+        <div class="diary-list" id="diaryList">
+
+            <article class="diary-entry initial-entry">
+                <span>START</span>
+                <h3>Начало путешествия</h3>
+                <p>
+                    Экспедиция началась.
+                    Впереди огромная и загадочная пустыня.
+                </p>
+                <span class="entry-status">ОТКРЫТО</span>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ФИНАЛ -->
+
+    <section class="ending">
+
+        <p class="subtitle">THE END?</p>
+
+        <h2>THE JOURNEY<br>IS NOT OVER.</h2>
+
+        <p>
+            Каждая история — это начало чего-то нового.
+        </p>
+
+        <a href="#home" class="start-button">
+            ВЕРНУТЬСЯ В НАЧАЛО ↑
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="footer-logo">BILBY.</div>
+
+    <p>FAN-MADE INTERACTIVE PROJECT</p>
+
+    <p>
+        This website is a fan-made tribute to the
+        DreamWorks short film Bilby (2018).
+    </p>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
